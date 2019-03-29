@@ -94,13 +94,14 @@ void loop() {
       flag = false;
     }
     Segundos = 30 - (actual - anterior);
-      if (luz_inicial == 0 or (Res > luz_inicial and Res-luz_inicial>100)or (Res>100 and luz_inicial - Res >73)){
+      if (luz_inicial == 0 or (abs(Res-luz_inicial>00))){
       luz_inicial = Res;
       Serial.println("Cambio");
     }
-    if ( (luz_inicial - Res) >  33) {
+    if ( (luz_inicial - Res) >  30){
       tmrpcm.play("canasta.wav", 4);
       Contador++;
+      delay(1000);
       Serial.println(Contador);
     }
     else {
@@ -127,6 +128,10 @@ void loop() {
         }
       }
     }
+     if (Segundos == 3){
+        tmrpcm.play("buzzer.wav");
+        delay(1000);
+     }
     delay(250);
   }
   else {
